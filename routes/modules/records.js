@@ -4,12 +4,26 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/new', (req, res) => {
-  return res.render('new')
+  Category.find()
+    .lean()
+    .then(categories => res.render('new', { categories }))
+    .catch(error => console.log(error))
 })
 
 router.post('/', (req, res) => {
-  return Record.create(req.body)
-    .then(() => res.redirect('/'))
+  const { name, date, categoryName, amount } = req.body
+  Category.findOne({ name: categoryName })
+    .lean()
+    .then(category => {
+      let categoryId = category._id
+      Record.create({
+        name,
+        date,
+        amount,
+        categoryId
+      })
+    })
+    .then(() => res.redirect("/"))
     .catch(error => console.log(error))
 })
 
