@@ -2,10 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
-const { route } = require('./home')
 
 router.get('/new', (req, res) => {
-  res.render('new')
+  return res.render('new')
 })
 
 router.post('/', (req, res) => {
@@ -32,6 +31,13 @@ router.put('/:id', (req, res) => {
       record = Object.assign(record, req.body)
       return record.save()
     })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

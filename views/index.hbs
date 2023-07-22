@@ -28,7 +28,11 @@
             <a href="/records/{{ this._id}}/edit" class="btn btn-success">修改</a>
           </td>
           <td>
-            <a href="" class="btn btn-danger">刪除</a>
+            <form id="delete-form" action="/records/{{ this._id }}?_method=DELETE" method="post"  onclick="return confirm('確定要刪除「{{this.name}}」？')">
+              <button type="submit" class="btn btn-danger">
+                刪除
+              </button>
+            </form>
           </td>
         </tr>
         {{/each}}
