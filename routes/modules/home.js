@@ -5,6 +5,7 @@ const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
   Record.find()
+    .populate('categoryId')
     .lean()
     .sort({ date: 'desc' })
     .then(records => {

@@ -16,7 +16,9 @@
       <tbody>
         {{#each records}}
         <tr>
-          <th scope="row"></th>
+          <th scope="row">
+            <i class="{{this.categoryId.icon}}" style="color: #1f2d37; font-size:30px"></i>
+          </th>
           <td>
             <h4>{{ this.name }}</h4>
             <small>{{ this.date }}</small>
