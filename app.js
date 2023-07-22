@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const routes = require('./routes')
 
 if (process.env.NODE_ENV !== 'production') {
@@ -16,6 +17,7 @@ app.set('view engine', 'hbs')
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.use(routes)
 
