@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 router.get('/search', (req, res) => {
 	const categoryId = req.query.category
-	let totalAmount = ''
+	let totalAmount = 0
 
 	if (!categoryId) {
 		return res.redirect('/')
