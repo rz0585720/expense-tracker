@@ -15,9 +15,9 @@
       {{#if isAuthenticated}}{{ user.name }}'s {{/if}}Expense Tracker
       </a>
       {{#if isAuthenticated}}
-      <a class="btn btn-info me-3" href="/users/login">Login</a>
-      {{else}}
       <a class="btn btn-info me-3" href="/users/logout">Logout</a>
+      {{else}}
+      <a class="btn btn-info me-3" href="/users/login">Login</a>
       {{/if}}
     </nav>
   </header>
