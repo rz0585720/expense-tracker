@@ -11,8 +11,14 @@
 <body>
   <header>
     <nav class="navbar bg-primary justify-content-between">
-      <a class="navbar-brand ms-3" href="/" style="color: #FFF;">Expense Tracker</a>
-      <a class="btn btn-info me-3" href="">Logout</a>
+      <a class="navbar-brand ms-3" href="/" style="color: #FFF;">
+      {{#if isAuthenticated}}{{ user.name }}'s {{/if}}Expense Tracker
+      </a>
+      {{#if isAuthenticated}}
+      <a class="btn btn-info me-3" href="/users/login">Login</a>
+      {{else}}
+      <a class="btn btn-info me-3" href="/users/logout">Logout</a>
+      {{/if}}
     </nav>
   </header>
   <main>
