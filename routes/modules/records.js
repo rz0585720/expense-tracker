@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
+    .populate('categoryId')
     .lean()
     .then(record => {
       record.date = record.date.toISOString().slice(0, 10)

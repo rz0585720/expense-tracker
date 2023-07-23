@@ -47,6 +47,7 @@ router.get('/search', (req, res) => {
 				.sort({ date: 'desc' })
 				.then(records => {
 					records.forEach(record => {
+            record.date = record.date.toISOString().slice(0, 10)
 						totalAmount += record.amount
 					})
 					res.render('index', { categories, records, totalAmount })
